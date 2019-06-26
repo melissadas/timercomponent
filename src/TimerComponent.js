@@ -2,15 +2,16 @@ import React from 'react';
 import { Button, Row, Container, Col } from 'react-bootstrap';
 
 class TimerComponent extends React.Component {
+
+
     constructor(props) {
         super(props);
         this.state = {
             currentTime: 0,
             startTime: 0,
-            showButton: false
-
+            showButton: false,
+            savedTime: 0
         }
-
 
     }
 
@@ -29,7 +30,18 @@ class TimerComponent extends React.Component {
 
 
     stopTimer = () => {
+        let savedTimes = []
         clearInterval(this.timer);
+        this.setState({
+            savedTime: Date(this.state.currentTime).toString()
+        })
+
+        // for (var i = 0; i < 5; i++) {
+        //     savedTimes.push(<p key={i}>{this.state.savedTime}</p>)
+        // }
+
+
+
     }
 
     pauseTimer() {
